@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 const getPhotoURL = (photo) => {
   if (!photo) return 'https://via.placeholder.com/150'; // fallback image
   if (photo.startsWith('http')) return photo;
-  return `http://localhost:3000/${photo.replace(/\\/g, '/')}`;
+  return `https://numerical-e8za.onrender.com/${photo.replace(/\\/g, '/')}`;
 };
 
 const MemberCard = ({ member, onPhotoUpdated }) => {
@@ -22,7 +22,7 @@ const MemberCard = ({ member, onPhotoUpdated }) => {
     try {
       setUpdating(true);
 
-      const res = await fetch(`http://localhost:3000/api/member/${member._id}/photo`, {
+      const res = await fetch(`https://numerical-e8za.onrender.com/api/member/${member._id}/photo`, {
         method: 'PUT',
         body: formData,
       });
@@ -84,7 +84,7 @@ const MembersList = () => {
   const [members, setMembers] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/member')
+    fetch('https://numerical-e8za.onrender.com/api/member')
       .then((res) => res.json())
       .then((data) => setMembers(data))
       .catch((err) => console.error('Error fetching members:', err));

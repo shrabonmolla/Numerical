@@ -10,7 +10,7 @@ function Students() {
   const studentsPerPage = 6;
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/member')
+    axios.get('https://numerical-e8za.onrender.com/api/member')
       .then((response) => {
         setStudents(response.data);
       })
@@ -81,7 +81,7 @@ function Students() {
 
   return (
     <div className="min-h-screen p-6 md:p-10 bg-white">
-      
+
       {/* Search Bar */}
       <div className="max-w-3xl mx-auto mb-8 px-4">
         <div className="relative">
@@ -111,7 +111,7 @@ function Students() {
           >
             <div className="flex justify-center mb-3">
               <img
-                src={`http://localhost:3000/${student.photo.replace(/\\/g, '/')}`}
+                src={`https://numerical-e8za.onrender.com/${student.photo.replace(/\\/g, '/')}`}
                 alt={student.name}
                 className="w-40 h-40 rounded-full border-8 border-purple-100 object-cover"
               />

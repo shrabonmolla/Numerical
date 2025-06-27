@@ -18,7 +18,7 @@ function Profile() {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/member')
+    fetch('https://numerical-e8za.onrender.com/api/member')
       .then((res) => res.json())
       .then((data) => {
         const foundUser = data.find((user) => user._id === id);
@@ -60,7 +60,7 @@ function Profile() {
         >
           <div className="w-full">
             <img
-              src={`http://localhost:3000/${cleanPhotoPath}`}
+              src={`https://numerical-e8za.onrender.com/${cleanPhotoPath}`}
               alt={profile.name}
               className="w-full h-80 md:h-96 object-cover rounded-xl shadow-md"
             />
