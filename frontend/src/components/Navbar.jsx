@@ -73,11 +73,7 @@ function Navbar() {
                 <FaImages /> Gallery
               </Link>
             </li>
-            <li>
-              <Link to="/login" onClick={toggleMenu} className="hover:text-blue-600 flex items-center gap-2">
-                <FaSignInAlt /> Login
-              </Link>
-            </li>
+            
           </ul>
         </div>
       )}
