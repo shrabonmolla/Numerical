@@ -8,7 +8,7 @@ function Resource() {
       title: 'Group Spaces',
       icon: <FaUsers className="text-blue-500 mr-2" />,
       items: [
-        { name: 'Classnote Group', link: 'https://web.telegram.org/a/#-1002273854118' },
+        { name: 'Classnote Group', link: 'https://t.me/+JBX8LkloPr8zNTM1' },
         { name: 'Notice Group', link: 'https://www.messenger.com/t/8457632377695721' },
         { name: 'Facebook Group', link: 'https://www.facebook.com/profile.php?id=61572255675948' },
       ],
