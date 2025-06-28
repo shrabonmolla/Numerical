@@ -97,7 +97,7 @@ function Profile() {
             <InfoItem icon={<FaMapLocation />} label="District" value={profile.district} delay={0.5} />
             <InfoItem icon={<MdBloodtype />} label="Blood Group" value={profile.blood} textClass="text-red-800" delay={0.65} />
             <InfoItem icon={<FaBus />} label="Varsity Bus" value={profile.bus} delay={0.7} />
-            <InfoItem icon={<FaPhone />} label="Phone" value={profile.phone} delay={0.7} />
+            
           </div>
         </motion.div>
       </motion.div>
