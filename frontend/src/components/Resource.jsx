@@ -17,6 +17,7 @@ function Resource() {
       title: 'Past Academic Materials',
       icon: <FaFolderOpen className="text-green-600 mr-2" />,
       items: [
+         { name: '2nd Year 1st Semester (18-Batch)', link: 'https://drive.google.com/drive/folders/1Xc3clTFKykcduz1Cxtm2Pc-3iKeBsweo?fbclid=IwY2xjawOOKCtleHRuA2FlbQIxMQBzcnRjBmFwcF9pZAEwAAEehWASG7FuAKlBwq3DHqgdhQENXadf0wmCeHpp-iGAsB37766pLB_udfXxeyo_aem_g1tTF01LOazxuOTdPNIhgg' },
         { name: '1st Year 1st Semester (19-Batch)', link: 'https://drive.google.com/drive/u/0/folders/1-6fQ82d5EX3Qtni3eKrMHcx7TOeeOqSQ' },
         { name: '1st Year 2nd Semester (19-Batch)', link: 'https://docs.google.com/spreadsheets/u/4/d/e/2PACX-1vQy-dMjg6ED8Vyc4PeFsglZe-13N98-m3VZgSZTPlQG7CHgXp8UGvV1LBxGoH2NTJq6XrLtefhmfMSf/pubhtml#' },
                 { name: '1st Year 1st Semester (18-Batch)', link: 'https://drive.google.com/drive/folders/1EwcNc8g5wXDDiqPjoTKGG0bbRqO3BEtX' },
