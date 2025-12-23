@@ -1,33 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { FaSearch } from 'react-icons/fa';
+import React, { useEffect, useState } from "react";
+import { Link, useLoaderData } from "react-router";
+import { FaSearch } from "react-icons/fa";
+import Loading from "../Shared Component/Loading";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 function Students() {
-  const [students, setStudents] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const studentsPerPage = 6;
 
-  useEffect(() => {
-    axios.get('https://numerical-e8za.onrender.com/api/member')
-      .then((response) => {
-        setStudents(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching student data:', error);
-      });
-  }, []);
+  //getting all students data
+  const { data: students = [], isPending } = useQuery({
+    queryKey: ["students"],
+    queryFn: async () => {
+      const res = await axios.get(
+        "https://numerical-e8za.onrender.com/api/member"
+      );
 
-  const filteredStudents = students.filter(student =>
-    student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    student.bio.toLowerCase().includes(searchTerm.toLowerCase())
+      return res.data;
+    },
+  });
+
+  if (isPending) {
+    return <Loading />;
+  }
+
+  const filteredStudents = students.filter(
+    (student) =>
+      student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      student.bio.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const totalPages = Math.ceil(filteredStudents.length / studentsPerPage);
   const indexOfLastStudent = currentPage * studentsPerPage;
   const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
-  const currentStudents = filteredStudents.slice(indexOfFirstStudent, indexOfLastStudent);
+  const currentStudents = filteredStudents.slice(
+    indexOfFirstStudent,
+    indexOfLastStudent
+  );
 
   const handlePageChange = (pageNumber) => {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
@@ -47,7 +58,7 @@ function Students() {
       pageNumbers.push(1);
 
       if (currentPage > 3) {
-        pageNumbers.push('...');
+        pageNumbers.push("...");
       }
 
       const startPage = Math.max(2, currentPage - 1);
@@ -58,7 +69,7 @@ function Students() {
       }
 
       if (currentPage < totalPages - 2) {
-        pageNumbers.push('...');
+        pageNumbers.push("...");
       }
 
       pageNumbers.push(totalPages);
@@ -67,12 +78,16 @@ function Students() {
     return pageNumbers.map((num, index) => (
       <button
         key={index}
-        onClick={() => typeof num === 'number' && handlePageChange(num)}
+        onClick={() => typeof num === "number" && handlePageChange(num)}
         className={`px-3 py-1 rounded text-sm transition 
-          ${num === currentPage ? 'bg-purple-500 text-white' : 'bg-gray-200 hover:bg-purple-100'}
-          ${num === '...' && 'cursor-default'}
+          ${
+            num === currentPage
+              ? "bg-purple-500 text-white"
+              : "bg-gray-200 hover:bg-purple-100"
+          }
+          ${num === "..." && "cursor-default"}
           focus:outline-none focus:ring-2 focus:ring-purple-400`}
-        disabled={num === '...'}
+        disabled={num === "..."}
       >
         {num}
       </button>
@@ -81,7 +96,6 @@ function Students() {
 
   return (
     <div className="min-h-screen p-6 md:p-10 bg-white">
-
       {/* Search Bar */}
       <div className="max-w-3xl mx-auto mb-8 px-4">
         <div className="relative">
@@ -111,7 +125,10 @@ function Students() {
           >
             <div className="flex justify-center mb-3">
               <img
-                src={`https://numerical-e8za.onrender.com/${student.photo.replace(/\\/g, '/')}`}
+                src={`https://numerical-e8za.onrender.com/${student.photo.replace(
+                  /\\/g,
+                  "/"
+                )}`}
                 alt={student.name}
                 className="w-40 h-40 rounded-full border-8 border-purple-100 object-cover"
               />

@@ -1,5 +1,5 @@
-import React from 'react';
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router";
 function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-6 text-center">
@@ -7,7 +7,10 @@ function Footer() {
         © {new Date().getFullYear()} All rights reserved.
       </p>
       <p className="text-xs md:text-sm mt-1">
-        Designed & Developed by <span className="font-bold text-2xl text-purple-400"><Link to="https://web.facebook.com/shrabon.molla.96"  >Shrabon</Link></span>
+        Designed & Developed by{" "}
+        <span className="font-bold text-2xl text-purple-400">
+          <Link to="https://web.facebook.com/shrabon.molla.96">Shrabon</Link>
+        </span>
       </p>
     </footer>
   );
